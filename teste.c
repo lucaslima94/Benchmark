@@ -2,16 +2,16 @@
 
 main(){
 	FILE *fp;
-	fp=fopen("saida2.txt","w");
+	//fp=fopen("saida","w");
 	char caractere;
 	int random,i,j;
-	for(i=0;i<5000;i++){
-		for(j=0;j<10000;j++){
+	for(i=0;i<50;i++){
+		for(j=0;j<50;j++){
 			random = (rand()%94)+33;
 			caractere=(char) random;
-			fprintf(fp,"%c ", caractere);
+			printf("%c ", caractere);
 		}
-		fprintf(fp,"\n");
+		printf("\n");
 	}
 
 }
