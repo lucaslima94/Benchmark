@@ -2,16 +2,23 @@
 #include <sys/time.h>
 
 void leituraaleatoria(long long int n){
-	FILE *arquivo;
+	FILE *arquivo,*arquivo2;
 	arquivo=fopen("saida","r");
+	arquivo2=fopen("leitura","w");
 	char caractere;
-	long long int i,random;
+	long long int i,random,j;
+	long index;
 	n=n*10;
-	for(i=0;i<n;i++){
-		//random=rand()%n;
-		fseek(arquivo,i,0);
-		caractere=fgetc(arquivo);
+	for(j=0;j<10;j++){
+		random=rand()%n;
+		fseek(arquivo,random,0);
+		for(i=0;i<n;i++){
+			caractere=fgetc(arquivo);
+			fprintf(arquivo2,"%c",caractere);
+		}
+		fprintf(arquivo2,"\n");
 	}
+	fclose(arquivo2);
 	fclose(arquivo);
 }
 		
@@ -23,11 +30,11 @@ main(int argc,char *argv[]){
 	struct timeval inicio, final;
 	char caractere;
 	long long int n,i,bloco,random,j;
-	float tmili,mbs,seconds;
+	float tmili,mbs,seconds,totaltime;
 	fp=fopen("saida","w");
 	gettimeofday(&inicio, NULL);
 	n=atol(argv[1]);
-	for(i=0;i<1024;i++){
+	for(i=0;i<1000;i++){
 		for(j=0;j<n;j++){
 			random = (rand()%94)+33;
 			caractere=(char) random;
@@ -38,6 +45,7 @@ main(int argc,char *argv[]){
 	gettimeofday(&final, NULL);
     tmili = (1000 * (final.tv_sec - inicio.tv_sec) + (final.tv_usec - inicio.tv_usec) / 1000);
     seconds=tmili/1000;
+    totaltime=seconds;
     mbs=(n/1000)/seconds;
 
     printf("Tempo medio de escrita sequencial: %f MB/s \n",mbs); 
@@ -46,9 +54,10 @@ main(int argc,char *argv[]){
     gettimeofday(&final, NULL);
     tmili = (1000 * (final.tv_sec - inicio.tv_sec) + (final.tv_usec - inicio.tv_usec) / 1000);
     seconds=tmili/1000;
+    totaltime=totaltime+seconds;
     mbs=(n/100000)/seconds;
     printf("Tempo medio de leitura aleatoria: %f MB/s \n",mbs);
-    printf("Tempo total : %f \n",seconds);
+    printf("Tempo total : %f s \n",totaltime);
     fclose(fp);
 }
 
