@@ -9,10 +9,10 @@ void leituraaleatoria(long int n){
 	long int i,random,j;
 	long int index;
 	index = n*1000;	
-	for(j=0;j<n;j++){
+	for(j=0;j<(n/100);j++){
 		random=rand()%index;
 		fseek(arquivo,random,0);
-		for(i=0;i<100;i++){
+		for(i=0;i<10000;i++){
 			caractere=fgetc(arquivo);
 			//fprintf(arquivo2,"%c",caractere);
 		}
@@ -27,10 +27,10 @@ void leiturasequencial(long int n){
 	fp=fopen("saida","r");
 	long int i,j;
 	char caractere;
-	for(i=0;i<100;i++){
-		for(j=0;j<n;j++){
+	for(i=0;i<(n*100);i++){
+		
 			caractere=fgetc(fp);
-		}
+		
 	}
 	fclose(fp);
 }
@@ -40,13 +40,12 @@ void escritaaleatoria(long int n){
 	fp=fopen("saida","r+");
 	long int i,j,random,index;
 	index=n*1000;
-	for(i=0;i<n;i++){
+	for(i=0;i<(n/10);i++){
 		random=rand()%index;
 		fseek(fp,random,0);
-		for(j=0;j<1000;j++){
+		for(j=0;j<10000;j++){
 			fprintf(fp,"c");
 		}
-		fprintf(fp,"\n");
 	}
 	fclose(fp);
 }
@@ -64,13 +63,12 @@ main(int argc,char *argv[]){
 	fp=fopen("saida","w");
 	n=atol(argv[1]);
 	gettimeofday(&inicio, NULL);
-	for(i=0;i<1000;i++){
-		for(j=0;j<n;j++){
+	for(i=0;i<(n*1000);i++){
+		
 			//random = (rand()%94)+33;
 			//caractere=(char) random;
 			fprintf(fp,"a");
-		}
-		fprintf(fp,"\n");
+		
 	}
 	gettimeofday(&final, NULL);
     tmili = (1000 * (final.tv_sec - inicio.tv_sec) + (final.tv_usec - inicio.tv_usec) / 1000);
