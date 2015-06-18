@@ -1,5 +1,6 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <sys/time.h>
+#include <math.h>
 
 struct resultados{
 	float es,la,ls,ea,tempoexecucao;
@@ -64,7 +65,7 @@ main(int argc,char *argv[]){
 	struct timeval inicio, final;
 	char caractere;
 	long int n,i,bloco,random,j,loopi,loopj,nmax;
-	float tmili,mbs,seconds,totaltime,mediaes,medials,mediaea,mediala,tempofinal;
+	float tmili,mbs,seconds,totaltime,mediaes,medials,mediaea,mediala,tempofinal,vares,varls,varea,varla,dif1,dif2,dif3,dif4;
 	struct resultados *resultadosfinais;
 	n=atol(argv[1]);
 	nmax=atol(argv[2]);
@@ -75,6 +76,11 @@ main(int argc,char *argv[]){
 	medials=0;
 	mediaea=0;
 	mediala=0;
+	vares=0;
+	varls=0;
+	varea=0;
+	varla=0;
+	dif1=0,dif2=0,dif3=0,dif4=0;
 	fp=fopen("saida","w");
 	gettimeofday(&inicio, NULL);
 	for(i=0;i<(n*1000);i++){
@@ -143,12 +149,32 @@ main(int argc,char *argv[]){
 	mediaea=mediaea/nmax;
 	medials=medials/nmax;
 	mediala=mediala/nmax;
-	printf("\n \n \n");
+	printf("\n");
 	printf("Media de escrita sequencial: %f MB/s \n",mediaes);
 	printf("Media de letura aleatoria: %f MB/s \n",mediala);
 	printf("Media de leitura sequencial: %f MB/s \n",medials);
 	printf("Media de escrita aleatoria: %f MB/s \n",mediaea);
+	for(loopi=0;loopi<nmax;loopi++){
+		vares=vares+(pow((resultadosfinais[loopi].es-mediaes),2));
+		varla=varla+(pow((resultadosfinais[loopi].la-mediala),2));
+		varls=varls+(pow((resultadosfinais[loopi].ls-medials),2));
+		varea=varea+(pow((resultadosfinais[loopi].ea-mediaea),2));
+	}
+	vares=vares/nmax;
+	varla=varla/nmax;
+	varls=varls/nmax;
+	varea=varea/nmax;
+	vares=sqrt(vares);
+	varla=sqrt(varla);
+	varls=sqrt(varls);
+	varea=sqrt(varea);
+	printf("\n");
+	printf("Desvio padrao escrita sequencial: %f MB/s \n",vares);
+	printf("Desvio padrao letura aleatoria: %f MB/s \n",varla);
+	printf("Desvio padrao leitura sequencial: %f MB/s \n",varls);
+	printf("Desvio padrao escrita aleatoria: %f MB/s \n",varea);
 	printf("Tempo total de execução: %f s \n",tempofinal);
+	
 	
 }
 
