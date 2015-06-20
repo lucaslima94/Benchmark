@@ -76,7 +76,10 @@ main(int argc,char *argv[]){
 	medials=0;
 	mediaea=0;
 	mediala=0;
-	vares=0,varls=0,varea=0,varla=0;
+	vares=0;
+	varls=0;
+	varea=0;
+	varla=0;
 	dif1=0,dif2=0,dif3=0,dif4=0;
 	fp=fopen("saida","w");
 	gettimeofday(&inicio, NULL);

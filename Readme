@@ -10,11 +10,11 @@ Como executar:
 ./benchmark x y
 
 onde:
-x - tamanho do arquivo em Kb.
+x - tamanho do arquivo em KB.
 y - número de repetições dos testes.
 
 Exemplo:
 
-executando o benchmarck com arquivo de 1Gb com 10 repetições:
+executando o benchmarck com arquivo de 1GB com 10 repetições:
 
 ./benchmark 1000000 10

@@ -1,4 +1,4 @@
-Benchmark do sistema de arquivos
+Benchmark do sistema de arquivos - t2 Sistemas Operacionais.
 Lucas Cauã Da Silva De Lima, Leonardo Yokemura Marques.
 
 Instruções de compilação e execução.
@@ -10,7 +10,7 @@ Como executar:
 ./benchmark x y
 
 onde:
-x - tamanho do arquivo em Kb.
+x - tamanho do arquivo em KB.
 y - número de repetições dos testes.
 
 Exemplo:
