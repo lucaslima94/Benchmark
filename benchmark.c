@@ -93,7 +93,7 @@ main(int argc,char *argv[]){
     totaltime=seconds;
     mbs=(n/1000)/seconds;
     resultadosfinais[loopi].es=mbs;
-	printf("Tempo medio de escrita sequencial: %f MB/s \n",mbs); 
+	printf("%lli Taxa Parcial de escrita sequencial: %f MB/s \n",(loopi+1),mbs); 
     
     
     
@@ -105,7 +105,7 @@ main(int argc,char *argv[]){
     totaltime=totaltime+seconds;
     mbs=(n/10000)/seconds;
     resultadosfinais[loopi].la=mbs;
-    printf("Tempo medio de leitura aleatoria: %f MB/s \n",mbs);
+    printf("%lli Taxa Parcial de leitura aleatoria: %f MB/s \n",(loopi+1),mbs);
     
 	gettimeofday(&inicio, NULL);
 	leiturasequencial(n);
@@ -114,7 +114,7 @@ main(int argc,char *argv[]){
     seconds=tmili/1000;
     mbs=(n/10000)/seconds;
     resultadosfinais[loopi].ls=mbs;
-    printf("Tempo medio de leitura sequencial: %f  MB/s \n",mbs);
+    printf("%lli Taxa Parcial de leitura sequencial: %f  MB/s \n",(loopi+1),mbs);
     
     
     gettimeofday(&inicio, NULL);
@@ -125,9 +125,9 @@ main(int argc,char *argv[]){
     totaltime=totaltime+seconds;
     mbs=(n/10000)/seconds;
     resultadosfinais[loopi].ea=mbs;
-    printf("Tempo medio de escrita aleatoria: %f MB/s \n",mbs);
+    printf("%lli Taxa Parcial de escrita aleatoria: %f MB/s \n",(loopi+1),mbs);
     
-    printf("Tempo total : %f \n",totaltime);
+    printf("Tempo parcial %lli : %f \n",(loopi+1),totaltime);
     resultadosfinais[loopi].tempoexecucao=totaltime;
     printf("\n");
     
