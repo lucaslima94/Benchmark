@@ -18,3 +18,6 @@ Exemplo:
 executando o benchmarck com arquivo de 1GB com 10 repetições:
 
 ./benchmark 1000000 10
+
+Codigo disponivel em :
+https://github.com/lucaslima94/Benchmark
