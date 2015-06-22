@@ -7,17 +7,18 @@ Como Compilar:
 gcc benchmark.c -o benchmark -lm
 
 Como executar:
-./benchmark x y
+./benchmark x y z
 
 onde:
 x - tamanho do arquivo em KB.
 y - número de repetições dos testes.
+z - caminho para realização dos testes.
 
 Exemplo:
 
-executando o benchmarck com arquivo de 1GB com 10 repetições:
+executando o benchmarck com arquivo de 1GB com 10 repetições na pasta /home/usuario.
 
-./benchmark 1000000 10
+./benchmark 1000000 10 /home/usuario/saida
 
 Codigo disponivel em :
 https://github.com/lucaslima94/Benchmark
