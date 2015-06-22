@@ -1,0 +1,20 @@
+Benchmark do sistema de arquivos - t2 Sistemas Operacionais.
+Lucas Cauã Da Silva De Lima, Leonardo Yokemura Marques.
+
+Instruções de compilação e execução.
+
+Como Compilar:
+gcc benchmark.c -o benchmark -lm
+
+Como executar:
+./benchmark x y
+
+onde:
+x - tamanho do arquivo em KB.
+y - número de repetições dos testes.
+
+Exemplo:
+
+executando o benchmarck com arquivo de 1GB com 10 repetições:
+
+./benchmark 1000000 10
